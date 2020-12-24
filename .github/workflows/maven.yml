@@ -12,7 +12,7 @@ on:
 jobs:
   build:
 
-    runs-on: windows-latest
+    runs-on: windows-2016
 
     steps:
     - uses: actions/checkout@v2
@@ -32,16 +32,16 @@ jobs:
     - name: Build with Maven
       run: mvn package
     
-#     # Create container  
-#     - name: Docker Login
-#       uses: azure/docker-login@v1
-#       with:
-#         username: ${{ secrets.DOCKER_USERNAME }}
-#         password: ${{ secrets.DOCKER_PASSWORD }}
+    # Create container  
+    - name: Docker Login
+      uses: azure/docker-login@v1
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
 
-#     - name: Build and Push container to registry
-#       run: |
-#         docker build --tag ankur198/springboot-windows:latest .
-#         docker push ankur198/springboot-windows:latest
+    - name: Build and Push container to registry
+      run: |
+        docker build --tag ankur198/springboot-windows:latest .
+        docker push ankur198/springboot-windows:latest
 
 
